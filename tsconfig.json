@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "preserve",
     "rootDir": "src",
     "baseUrl": "src",
     "allowJs": true,
@@ -19,8 +19,13 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "noEmit": true,
+    "isolatedModules": true
   },
   "include": [
+    "next-env.d.ts",
     "src"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

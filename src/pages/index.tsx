@@ -1,19 +1,31 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { GetStaticProps } from 'next'
 import { PokemonsProps } from 'types/pokemons'
 
-const Home: React.FC = () => {
-  const [pokemons, setPokemons] = useState<PokemonsProps[]>([])
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokedex/2/')
-      .then(response => {
-        if (response.data.pokemon_entries) {
-          setPokemons(response.data.pokemon_entries)
-        }
-      })
-      .catch(erro => console.log(erro))
-  }, [])
+interface Props {
+  pokemons: PokemonsProps[]
+}
 
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pokemons = await fetch('https://pokeapi.co/api/v2/pokedex/2/')
+    .then((response) => {
+      if (response) {
+        return response.json()
+      }
+    })
+    .then((pokemonsObject) => {
+      return pokemonsObject.pokemon_entries
+    })
+    .catch(error => console.log(error))
+  return {
+    props: {
+      pokemons
+    }
+  }
+}
+
+const Home: React.FC<Props> = (props: Props) => {
+  const { pokemons } = props
   return (
     <div>
       Pokédex | Lucas Tamir

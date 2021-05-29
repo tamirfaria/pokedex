@@ -5,3 +5,7 @@ export type PokemonsProps = {
     url: string
   }
 }
+
+export interface Props {
+  pokemons: PokemonsProps[]
+}

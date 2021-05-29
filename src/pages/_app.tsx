@@ -8,7 +8,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
     <Head>
-      <title>Pokédex | Tamir Faria</title>
+      <title>Pokédex</title>
     </Head>
       <GlobalStyle />
       <Component {...pageProps} />

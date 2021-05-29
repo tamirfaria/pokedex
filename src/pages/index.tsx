@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { PokemonsProps } from 'types/pokemons'
 
@@ -28,7 +29,10 @@ const Home: React.FC<Props> = (props: Props) => {
   const { pokemons } = props
   return (
     <div>
-      Pokédex | Lucas Tamir
+      <Head>
+        <title>Pokédex | Tamir Faria</title>
+      </Head>
+      <h1>Pokédex | Lucas Tamir</h1>
       <ul>
         {pokemons.map((pokemon, index) => (
           <div key={pokemon.entry_number}>
